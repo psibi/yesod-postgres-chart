@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: yesod-demo
-          image: {{ .Values.image.respository }}:{{ .Values.image.tag }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           env:
             - name: YESOD_STATIC_DIR
               valueFrom:
