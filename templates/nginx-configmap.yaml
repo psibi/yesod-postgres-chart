@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "yesod-nginx-resource.full_name" . }}-configmap
+data:
+  proxy.conf: |-
+    {{ .Files.Get "conf/proxy.conf" }}
