@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ template "yesod-postgres-chart.full_name" . }}
+  labels:
+    {{- include "yesod-postgres-chart.release_labels" . | indent 4 }}
+spec:
+  selector:
+    app: {{ template "yesod-postgres-chart.full_name" . }}
+  ports:
+    - protocol: "TCP"
+      port: 3100
+      targetPort: 3000
+      nodePort: 31000
+  type: NodePort

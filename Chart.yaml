@@ -1,0 +1,12 @@
+apiVersion: v1
+appVersion: "1.0"
+description: A Helm chart for Yesod Scaffolding with Postgres support
+name: yesod-postgres-chart
+keywords:
+  - yesod
+  - postgres
+maintainers:
+  - name: Sibi Prabakaran
+  - email: sibi@psibi.in
+  - url: https://psibi.in
+version: 0.1.0
