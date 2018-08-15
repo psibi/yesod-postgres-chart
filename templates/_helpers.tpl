@@ -12,8 +12,10 @@ version: {{ .Chart.Version }}
 release: {{ .Release.Name }}
 {{- end }}
 
-
-
 {{- define "yesod-postgres-chart.full_name" -}}
 {{- printf "%s-%s" .Release.Name .Chart.Name | trunc 63 -}}
+{{- end -}}
+
+{{- define "yesod-nginx-resource.full_name" -}}
+{{- printf "nginx-%s-%s" .Release.Name .Chart.Name | trunc 63 -}}
 {{- end -}}
