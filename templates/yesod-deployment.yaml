@@ -36,10 +36,10 @@ spec:
             - name: YESOD_PGUSER
               valueFrom:
                 secretKeyRef:
-                  name: yesod-secret
+                  name: {{ template "yesod-postgres-chart.full_name" . }}-secret
                   key: yesod-db-user
             - name: YESOD_PGPASS
               valueFrom:
                 secretKeyRef:
-                  name: yesod-secret
+                  name: {{ template "yesod-postgres-chart.full_name" . }}-secret
                   key: yesod-db-password
