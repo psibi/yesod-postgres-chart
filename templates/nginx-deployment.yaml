@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "yesod-nginx-resource.full_name" . }}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        {{- include "yesod-nginx-resource.release_labels" . | indent 8 }}
+    spec:
+      containers:
+        - name: nginx
+          image: "nginx:1.9.14"
+          lifecycle:
+            preStop:
+              exec:
+                command: ["/usr/sbin/nginx","-s","quit"]
+          volumeMounts:
+            - name: "yesod-nginx-proxy-conf"
+              mountPath: "/etc/nginx/conf.d"
+      volumes:
+        - name: {{ template "yesod-nginx-resource.full_name" . }}-configmap
+          configMap:
+            name: {{ template "yesod-nginx-resource.full_name" . }}-configmap
+            items:
+              - key: "proxy.conf"
+                path: "proxy.conf"

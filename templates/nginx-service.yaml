@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ template "yesod-nginx-resource.full_name" . }}
+spec:
+  selector:
+    restype: "nginx"
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
