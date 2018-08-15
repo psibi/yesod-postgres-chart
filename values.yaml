@@ -8,13 +8,17 @@ db:
   user: postgres
   password: fajkfjakjfka
 
-yesod-app:
-  image: 
-
 image:
   repository: psibi/yesod-demo
   tag: 3.0-yesod-demo
   pullPolicy: IfNotPresent
+
+postgresql:
+  postgresUser: postgres
+  postgresPassword: fajkfjakjfka
+  postgresDatabase: yesod-test
+  persistence:
+    storageClass: ssd-slow
 
 service:
   type: ClusterIP
