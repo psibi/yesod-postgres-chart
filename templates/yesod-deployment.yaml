@@ -16,22 +16,22 @@ spec:
             - name: YESOD_STATIC_DIR
               valueFrom:
                 configMapKeyRef:
-                  name: yesod-config
+                  name: {{ template "yesod-postgres-chart.full_name" . }}-configmap
                   key: yesod_static_path
             - name: YESOD_PGPORT
               valueFrom:
                 configMapKeyRef:
-                  name: yesod-config
+                  name: {{ template "yesod-postgres-chart.full_name" . }}-configmap
                   key: yesod_db_port
             - name: YESOD_PGHOST
               valueFrom:
                 configMapKeyRef:
-                  name: yesod-config
+                  name: {{ template "yesod-postgres-chart.full_name" . }}-configmap
                   key: yesod_host_name
             - name: YESOD_PGDATABASE
               valueFrom:
                 configMapKeyRef:
-                  name: yesod-config
+                  name: {{ template "yesod-postgres-chart.full_name" . }}-configmap
                   key: yesod_db_name
             - name: YESOD_PGUSER
               valueFrom:
