@@ -3,5 +3,17 @@ kind: ConfigMap
 metadata:
   name: {{ template "yesod-nginx-resource.full_name" . }}-configmap
 data:
-  proxy.conf: |-
-    {{ .Files.Get "conf/proxy.conf" }}
+  proxy.conf:
+    upstream yesod-server {
+    server {{ template "yesod-postgres-chart.full_name" . }}.default.svc.cluster.local:3100;
+    }
+
+    server {
+      listen 80;
+
+      location / {
+        proxy_pass http://yesod-server;
+        }
+    }
+
+
