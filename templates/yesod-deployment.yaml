@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: {{ template "yesod-postgres-chart.full_name" . }}
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -12,6 +12,21 @@ spec:
       containers:
         - name: yesod-demo
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          livenessProbe:
+            httpGet:
+              path: /health/liveness
+              port: 3000
+              scheme: HTTP
+              initialDelaySeconds: 30
+              periodSeconds: 15
+              timeoutSeconds: 5              
+          readinessProbe:
+            httpGet:
+              path: /health/readiness
+              port: 3000
+              scheme: HTTP
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
           env:
             - name: YESOD_STATIC_DIR
               valueFrom:
