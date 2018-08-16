@@ -4,7 +4,7 @@ metadata:
   name: {{ template "yesod-nginx-resource.full_name" . }}
 spec:
   selector:
-    restype: "nginx"
+    {{- include "yesod-nginx-resource.release_labels" . | indent 4 }}
   ports:
     - protocol: "TCP"
       port: 80
