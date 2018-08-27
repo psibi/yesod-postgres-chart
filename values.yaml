@@ -16,6 +16,24 @@ postgresql:
   persistence:
     storageClass: ssd-slow
 
+resources:
+  yesodapp:
+    limits:
+      cpu: 0.8
+      memory: "500Mi"
+    requests:
+      cpu: 0.2
+      memory: "300Mi"
+
+  nginx:
+    limits:
+      cpu: "500m"
+      memory: "128Mi"
+    requests:
+      cpu: "250m"
+      memory: "64Mi"
+      
+
 service:
   type: ClusterIP
   port: 80
