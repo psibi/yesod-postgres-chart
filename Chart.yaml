@@ -7,6 +7,6 @@ keywords:
   - postgres
 maintainers:
   - name: Sibi Prabakaran
-  - email: sibi@psibi.in
-  - url: https://psibi.in
+    email: sibi@psibi.in
+    url: https://psibi.in
 version: 0.1.0
