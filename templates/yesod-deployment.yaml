@@ -13,12 +13,7 @@ spec:
         - name: yesod-demo
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           resources:
-            requests:
-              memory: {{ .Values.resources.yesodapp.requests.memory }}
-              cpu: {{ .Values.resources.yesodapp.requests.cpu }}
-            limits:
-              memory: {{ .Values.resources.yesodapp.requests.memory }}
-              cpu: {{ .Values.resources.yesodapp.requests.cpu }}
+{{ toYaml .Values.yesodapp.resources | indent 12 }}
           livenessProbe:
             httpGet:
               path: /health/liveness
